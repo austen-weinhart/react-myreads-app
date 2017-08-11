@@ -3,6 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "babel": "^6.23.0",
     "bulma": "^0.5.1",
     "escape-string-regexp": "^1.0.5",
     "form-serialize": "^0.7.2",
@@ -11,6 +12,7 @@
     "react-dom": "^15.6.1",
     "react-router-dom": "^4.1.2",
     "react-scripts": "1.0.11",
+    "sass": "^1.0.0-beta.2",
     "semantic-ui-css": "^2.2.12",
     "semantic-ui-react": "^0.71.3",
     "sort-by": "^1.2.0"

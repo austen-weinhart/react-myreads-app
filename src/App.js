@@ -19,7 +19,9 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        <h1>MyReads</h1>
+        <header>
+          <h1>MyReads</h1>
+        </header>
         <Bookshelf
           books={this.state.books}
         />
