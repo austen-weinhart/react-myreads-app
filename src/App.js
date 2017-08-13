@@ -1,5 +1,4 @@
 import React, { Component } from 'react'
-import logo from './logo.svg'
 import './App.css'
 import Bookshelf from './Bookshelf'
 import * as BooksAPI from './utils/BooksAPI'

@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 
 class Book extends Component {
   render() {
-    const { bookAuthors, bookDescription, bookTitle, coverImage } = this.props
+    const { bookAuthors, bookDescription, bookTitle, coverImage, shelf } = this.props
 
     return(
       <li>
@@ -10,7 +10,7 @@ class Book extends Component {
           {/* Front */}
           <ul className="hardcover_front">
             <li>
-              <img src={ this.props.coverImage } alt="" width="100%" height="100%" />
+              <img src={coverImage} alt="" width="100%" height="100%" />
             </li>
             <li />
           </ul>
@@ -18,7 +18,10 @@ class Book extends Component {
           <ul className="page">
             <li />
             <li>
-              <a className="btn" href="#">Download</a>
+              <button>Want to Read</button>
+              <button>Currently Reading</button>
+              <button>Finished Reading</button>
+              <button>Remove Book</button>
             </li>
             <li />
             <li />
@@ -34,11 +37,11 @@ class Book extends Component {
             <li />
           </ul>
           <figcaption>
-            <h1>{this.props.bookTitle}</h1>
+            <h1>{bookTitle}</h1>
             <br />
             <p>Author(s):</p>
             <ul>
-              {this.props.bookAuthors.map((author) => (
+              {bookAuthors.map((author) => (
                 <li
                   key={author}
                 >
@@ -47,7 +50,7 @@ class Book extends Component {
               ))}
             </ul>
             <br />
-            <p>{this.props.bookDescription.slice(0, 120)}...</p>
+            <p>{bookDescription.slice(0, 120)}...</p>
           </figcaption>
         </figure>
       </li>
