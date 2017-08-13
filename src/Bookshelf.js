@@ -15,98 +15,16 @@ class Bookshelf extends Component {
     const { activeShelf } = this.state
     const { books } = this.props
 
-    const wantToReadContent = (
-      <div className="container">
-        <div className="component">
-          <ul className="align">
-            {books.filter((book) => (book.shelf === 'wantToRead')).map((book) => (
-              <Book
-                key={book.id}
-                coverImage={book.imageLinks.thumbnail}
-                bookTitle={book.title}
-                bookDescription={book.description}
-                bookAuthors={book.authors}
-                shelf={book.shelf}
-              />
-            ))}
-          </ul>
-        </div>
-      </div>
-    )
+    let showingBooks
 
-    const currentlyReadingContent = (
-      <div className="container">
-        <div className="component">
-          <ul className="align">
-            {books.filter((book) => (book.shelf === 'currentlyReading')).map((book) => (
-              <Book
-                key={book.id}
-                coverImage={book.imageLinks.thumbnail}
-                bookTitle={book.title}
-                bookDescription={book.description}
-                bookAuthors={book.authors}
-                shelf={book.shelf}
-              />
-            ))}
-          </ul>
-        </div>
-      </div>
-    )
-
-    const finishedReadingContent = (
-      <div className="container">
-        <div className="component">
-          <ul className="align">
-            {books.filter((book) => (book.shelf === 'read')).map((book) => (
-              <Book
-                key={book.id}
-                coverImage={book.imageLinks.thumbnail}
-                bookTitle={book.title}
-                bookDescription={book.description}
-                bookAuthors={book.authors}
-                shelf={book.shelf}
-              />
-            ))}
-          </ul>
-        </div>
-      </div>
-    )
-
-    const allBooksContent = (
-      <div className="container">
-        <div className="component">
-          <ul className="align">
-            {books.map((book) => (
-              <Book
-                key={book.id}
-                coverImage={book.imageLinks.thumbnail}
-                bookTitle={book.title}
-                bookDescription={book.description}
-                bookAuthors={book.authors}
-                shelf={book.shelf}
-              />
-            ))}
-          </ul>
-        </div>
-      </div>
-    )
-
-    const nothingToReadContent = (
-      <h2>No books selected</h2>
-    )
-
-    function BookshelfContent() {
-      if (activeShelf === 'Search for Books') {
-        return allBooksContent
-      } else if (activeShelf === 'Want to Read') {
-        return wantToReadContent
-      } else if (activeShelf === 'Currently Reading') {
-        return currentlyReadingContent
-      } else if (activeShelf === 'Finished Reading') {
-        return finishedReadingContent
-      } else {
-        return nothingToReadContent
-      }
+    if (activeShelf === 'Want to Read') {
+      showingBooks = books.filter((book) => (book.shelf === 'wantToRead'))
+    } else if (activeShelf === 'Currently Reading') {
+      showingBooks = books.filter((book) => (book.shelf === 'currentlyReading'))
+    } else if (activeShelf === 'Finished Reading') {
+      showingBooks = books.filter((book) => (book.shelf === 'read'))
+    } else {
+      showingBooks = books
     }
 
     return(
@@ -120,7 +38,22 @@ class Bookshelf extends Component {
           </Menu.Menu>
         </Menu>
 
-        <BookshelfContent />
+        <div className="container">
+          <div className="component">
+            <ul className="align">
+              {showingBooks.map((book) => (
+                <Book
+                  key={book.id}
+                  coverImage={book.imageLinks.thumbnail}
+                  bookTitle={book.title}
+                  bookDescription={book.description}
+                  bookAuthors={book.authors}
+                  shelf={book.shelf}
+                />
+              ))}
+            </ul>
+          </div>
+        </div>
 
         <p className="note">Please note that this only works in browsers that support CSS 3D Transforms. Also note that IE10 <strong>does not</strong> support <em>preserve-3d</em> which is needed for this application.</p>
       </div>
